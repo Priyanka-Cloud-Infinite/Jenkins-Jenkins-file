@@ -1,6 +1,9 @@
 pipeline {
     agent any
-
+    parameters{
+        choice(name:'VERSION',choices :['1.1.0','1.2.0','1.3.0'])
+        booleanParam(name:'ExecuteTest',defaultValue:true,description:'')
+    }
     stages {
         stage('Build') {
             steps {
@@ -11,7 +14,12 @@ pipeline {
         stage('Test') {
             when{
                 expression{
-                    env.BRANCH_NAME == 'Dev' || env.BRANCH_NAME == 'main'
+                    env.BRANCH_NAME == 'dev' || env.BRANCH_NAME == 'main'
+                }
+            }
+            when{
+                expression{
+                    params.ExecuteTest == true
                 }
             }
             steps {
@@ -21,6 +29,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                echo "deploying version ${params.VERSION}"
             }
         }
     }
