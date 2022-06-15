@@ -9,6 +9,11 @@ pipeline {
             }
         }
         stage('Test') {
+            when{
+                expression{
+                    env.BRANCH_NAME == 'Dev' || env.BRANCH_NAME == 'main'
+                }
+            }
             steps {
                 echo 'Testing..'
             }
@@ -17,6 +22,17 @@ pipeline {
             steps {
                 echo 'Deploying....'
             }
+        }
+    }
+    post {
+        always{
+            // always 
+        }
+        success{
+            // sucsess 
+        }
+        failure{
+            // always 
         }
     }
 }
