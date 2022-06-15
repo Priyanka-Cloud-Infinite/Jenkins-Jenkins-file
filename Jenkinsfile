@@ -14,11 +14,7 @@ pipeline {
         stage('Test') {
             when{
                 expression{
-                    env.BRANCH_NAME == 'dev' 
-                }
-            }
-            when{
-                expression{
+                    env.BRANCH_NAME == 'dev' || env.BRANCH_NAME == 'main'
                     params.ExecuteTest == true
                 }
             }
