@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage("Demo") {
             steps {
-                sh "Hello Priyanka Patel"
+                script()
             }
         }
       
