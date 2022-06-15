@@ -1,36 +1,13 @@
 @Library('Jenkins-13') _
-def gv
 
 pipeline {
     agent any
     stages {
-        stage("init") {
+        stage("Demo") {
             steps {
-                script {
-                   gv = load "script.groovy" 
-                }
+                script ('Priyanka Patel)
             }
         }
-        stage("build") {
-            steps {
-                script {
-                    gv.buildApp()
-                }
-            }
-        }
-        stage("test") {
-            steps {
-                script {
-                    gv.testApp()
-                }
-            }
-        }
-        stage("deploy") {
-            steps {
-                script {
-                    gv.deployApp()
-                }
-            }
-        }
+      
     }   
 }
