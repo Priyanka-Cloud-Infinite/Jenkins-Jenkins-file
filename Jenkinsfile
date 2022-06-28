@@ -6,6 +6,7 @@ pipeline {
         stage("Demo") {
             steps {
                 welcome("priyanka")
+                echo '.....'
             }
         }
       
